@@ -1,38 +1,55 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Primeiro Web Site</title>
-    
-    <link rel="stylesheet" href="style.css">
-    
-    <script src="script.js" defer></script>
-</head>
-<body>
+// --- 1. Lógica do Modo Escuro/Claro ---
+const botaoTema = document.getElementById('botao-interativo');
 
-    <header> 
-        <h1>Meu Primeiro Web Site</h1>
-        <p>Irei assistir e codar</p>
+botaoTema.addEventListener('click', () => {
+    document.body.classList.toggle('modo-escuro');
+  
+    if (document.body.classList.contains('modo-escuro')) {
+        botaoTema.textContent = 'Alternar Modo Claro';
+    } else {
+        botaoTema.textContent = 'Alternar Modo Escuro';
+    }
+});
+
+// --- 2. Lógica de Curtir e Descurtir ---
+const btnLike = document.getElementById('btn-like');
+const iconeLike = document.getElementById('icone-like');
+const textoLike = document.getElementById('texto-like');
+const contadorLikes = document.getElementById('contador-likes');
+
+let likes = 0;
+let jaCurtiu = false;
+
+btnLike.addEventListener('click', () => {
+    if (!jaCurtiu) {
+        // Ação de CURTIR
+        likes++;
+        jaCurtiu = true;
         
-        <button id="botao-interativo">Alternar Modo Escuro</button>
-    </header> 
-
-    <main> 
-        <h2>Meu primeiro teste</h2>   
-        <p>Boas-vindas ao que eu sei!</p>
+        iconeLike.textContent = '❤️';
+        textoLike.textContent = 'Curtido';
+        btnLike.classList.add('curtido');
+    } else {
+        // Ação de DESCURTIR
+        likes--;
+        jaCurtiu = false;
         
-        <img class="imagem-site" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=800&q=80" alt="Código de programação em uma tela">
+        iconeLike.textContent = '🤍';
+        textoLike.textContent = 'Curtir';
+        btnLike.classList.remove('curtido');
+    }
 
-        <p>Este é o começo da minha jornada como desenvolvedor
-        <div class="container-interacoes">
-            <button id="btn-like" class="btn-like">
-                <span id="icone-like">🤍</span> 
-                <span id="texto-like">Curtir</span> 
-                (<span id="contador-likes">0</span>)
-            </button>
+    // Atualiza o valor na tela
+    contadorLikes.textContent = likes;
+});
 
-            <div class="container-reacoes">
-                <button class="btn-reacao">🔥 <span class="qtd-reacao">0</span></button>
-                <button class="btn-reacao">🚀 <span class="qtd-reacao">0</span></button>
-                <button class="btn-reacao"> <span class="qtd-reacao">0</span>
+// --- 3. Lógica das Reações em Emojis ---
+const botoesReacao = document.querySelectorAll('.btn-reacao');
+
+botoesReacao.forEach(botao => {
+    botao.addEventListener('click', () => {
+        const contador = botao.querySelector('.qtd-reacao');
+        let valorAtual = parseInt(contador.textContent);
+        contador.textContent = valorAtual + 1;
+    });
+});
