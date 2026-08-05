@@ -7,11 +7,39 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
+/* --- Regras do Modo Escuro --- */
+body.modo-escuro {
+    background-color: #121212;
+    color: #f1f1f1;
+}
+
+body.modo-escuro main {
+    background-color: #1e1e1e;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.05);
+}
+
 header {
     background-color: #0077ff;
     color: #FFFFFF;
     text-align: center;
     padding: 40px 20px;
+}
+
+/* Botão de Trocar Tema no Header */
+#botao-interativo {
+    margin-top: 15px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    background-color: #ffffff;
+    color: #0077ff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#botao-interativo:hover {
+    transform: scale(1.05);
 }
 
 main {
@@ -22,6 +50,7 @@ main {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+    transition: background-color 0.3s;
 }
 
 h1 {
@@ -34,6 +63,71 @@ h1 {
     object-fit: cover;
     border-radius: 6px;
     margin: 20px 0;
+}
+
+/* --- Estilos de Interação (Likes e Reações) --- */
+.container-interacoes {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+body.modo-escuro .container-interacoes {
+    border-top-color: #333;
+}
+
+/* Botão principal de Curtir */
+.btn-like {
+    background-color: #f0f2f5;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    transition: all 0.2s ease;
+}
+
+.btn-like:hover {
+    transform: scale(1.05);
+}
+
+/* Visual aplicado apenas quando estiver curtido */
+.btn-like.curtido {
+    background-color: #ffe6e6;
+    border-color: #ff4757;
+    color: #ff4757;
+}
+
+/* Botões de reações (Emojis) */
+.container-reacoes {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-reacao {
+    background-color: #f0f2f5;
+    border: 1px solid #ccc;
+    padding: 6px 14px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+
+body.modo-escuro .btn-reacao {
+    background-color: #2b2b2b;
+    border-color: #444;
+    color: #fff;
+}
+
+.btn-reacao:hover {
+    background-color: #e4e6eb;
 }
 
 footer {
