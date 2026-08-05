@@ -35,4 +35,4 @@
             <div class="container-reacoes">
                 <button class="btn-reacao">🔥 <span class="qtd-reacao">0</span></button>
                 <button class="btn-reacao">🚀 <span class="qtd-reacao">0</span></button>
-                <button class="btn-reacao">👏 <span class="qtd-reacao">0</span>
+                <button class="btn-reacao"> <span class="qtd-reacao">0</span>
